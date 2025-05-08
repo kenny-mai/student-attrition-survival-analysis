@@ -54,7 +54,7 @@ check <- final_data %>%
   group_by(sa_scholar_id) %>% 
   summarize(total_sus = sum(suspensions)+sum(reprimands)) %>% 
   mutate(ever_sus = ifelse((total_sus == 0 | is.na(total_sus)==TRUE), 0, 1)) 
-sum(test$ever_sus)
+sum(check$ever_sus)
 
 # Fit time-dependent Cox Proportional Hazards model 
 mod_1 <- coxph(Surv(tstart, tstop, withdrawn) 
